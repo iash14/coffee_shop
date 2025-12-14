@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ароматна — міні-магазин (PWA)</title>
+  <meta name="theme-color" content="#3b2a1a" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">☕</div>
+      <div>
+        <h1>Кав’ярня «Ароматна»</h1>
+        <p class="subtitle">PWA-магазин: офлайн, кеш, оновлення, API, sync</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn btn-ghost" id="btnUpdate" type="button">Оновити сайт</button>
+      <button class="btn btn-ghost" id="btnOrderOffline" type="button">Замовити офлайн</button>
+
+      <button class="btn btn-cart" id="btnCart" type="button" aria-label="Відкрити кошик">
+        Кошик <span class="badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="offline" class="offline-banner" role="status" aria-live="polite">
+    Офлайн-режим активний. Доступні закешовані сторінки та меню.
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <img class="hero-img" src="coffee.jpg" alt="Кава" width="300" height="300" />
+      <div class="hero-text">
+        <h2>Міні-магазин кави</h2>
+        <p>Додавай позиції в кошик, перевіряй офлайн, оновлення SW, API кеш і background sync.</p>
+        <div class="hero-hints">
+          <span class="pill">Offline-ready</span>
+          <span class="pill">Cache-first + SWR</span>
+          <span class="pill">Network-first для API</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h3>Меню</h3>
+        <p class="muted">Завантажується з <code>/api/menu.json</code> і кешується.</p>
+      </div>
+
+      <div id="menuGrid" class="grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-backdrop" id="drawerClose"></div>
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Кошик">
+      <div class="drawer-head">
+        <h3>Кошик</h3>
+        <button class="btn btn-ghost" id="drawerX" type="button">✕</button>
+      </div>
+
+      <div id="cartItems" class="cart-items"></div>
+
+      <div class="drawer-foot">
+        <div class="total">
+          <span>Разом:</span>
+          <strong id="cartTotal">0 ₴</strong>
+        </div>
+        <button class="btn btn-primary" id="btnCheckout" type="button">Оформити</button>
+        <button class="btn btn-ghost" id="btnClearCart" type="button">Очистити</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

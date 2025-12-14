@@ -1,0 +1,11 @@
+{
+  "name": "Кав’ярня Ароматна",
+  "short_name": "Ароматна",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5e6d3",
+  "theme_color": "#3b2a1a",
+  "icons": [
+    { "src": "coffee.jpg", "sizes": "300x300", "type": "image/jpg" }
+  ]
+}
